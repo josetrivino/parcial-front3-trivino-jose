@@ -26,7 +26,8 @@ export default function Form() {
     event.preventDefault();
     if (
       !datos.nombre.trim().length >= 3 ||
-      datos.apellido.length < 6
+      datos.apellido.length < 6 ||
+      datos.instrumentoFav.length < 2 
     ) {
       setError(true);
       return;
@@ -40,36 +41,16 @@ export default function Form() {
     <div className="box">
       <form onSubmit={handleSubmit}>
         <label htmlFor="nombre">Nombre: </label>
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Ingresa tu nombre"
-          onChange={handleChange}
-          value={datos.nombre}
-        />
+        <input type="text" name="nombre" onChange={handleChange} value={datos.nombre}/>
         <label htmlFor="apellido">Apellido: </label>
-        <input
-          type="text"
-          name="apellido"
-          placeholder="Ingresa tu apellido"
-          onChange={handleChange}
-          value={datos.apellido}
-        />
+        <input type="text" name="apellido" onChange={handleChange} value={datos.apellido}/>
         <label htmlFor="instrumentoFav">Instrumento Musical Favorito: </label>
-        <input
-          type="text"
-          name="instrumentoFav"
-          placeholder="Ingresa tu Instrumento Musical favorito"
-          onChange={handleChange}
-          value={datos.instrumentoFav}
-        />
+        <input type="text" name="instrumentoFav" onChange={handleChange} value={datos.instrumentoFav}/>
         <button type="submit">Enviar</button>
-        {error && (
-          <p style={{ color: "red" }}>
-            Por favor chequea que la información sea correcta
-          </p>
-        )}
+
+        {error && (<p style={{ color: "red" }}>Por favor chequea que la información sea correcta</p>)}
       </form>
+      
       {mostrarCard && (
         <Card
           nombre={datos.nombre.trim()}
